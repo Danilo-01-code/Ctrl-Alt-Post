@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        #delete {
+    color: purple; /* Define a cor do texto como roxa */
+    }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {%block content%}
+    <h1 id = delete>Delete post</h1>
+    <form action="" method = "post">{%csrf_token%}
+        <p>Are you sure you want delete "{{post.title}}"?</p>
+        <input type="submit" value = "Confirm">
+    </form>
+    {%endblock content%}
+</body>
+</html>
