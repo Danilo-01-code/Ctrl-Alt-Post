@@ -5,21 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piada Interna Channel</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="styleshee\t">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style> 
+    .hi{
+        text-align: center;
+        color:black;
+    }
+    .log {
+            text-align: center; 
+            margin: 0; 
+        }
+    </style>
 </head>
 <body>
+    <div>
     <header>
         <div> 
-            <h1><a href="{% url 'home' %}">Blog da Piada Interna</a></h1>
+            <h1 id="title" style="color: white;">
+                <a href="{% url 'home' %}" style="color: white;">Blog da Piada Interna</a>
+            </h1>
         </div>
         <div class="nav-right">
             <a href="{% url 'post_new' %}">+ New Blog Post</a>
         </div>
     </header>
-        <div>
-            {% block content %}
-            {% endblock content %}
-        </div>
+    {%if user.is_authenticated%}
+        <p class = 'hi'>Hi {{user.username}}.</p>
+        <p class = 'log'><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p class = 'hi'>You are not logged in.</p>
+        <p class = 'log'><a href="{%url 'login'%}">Log In</a></p>
+    {% endif %}
+    {% block content %}
+    {% endblock content %}
+    </div>
 </body>
 </html>
