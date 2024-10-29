@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piada Interna Post Delete</title>
-    <style> 
-        #delete {
-    color: purple; /* Define a cor do texto como roxa */
-    }
-    body {
-            display: flex; /* Ativa o Flexbox */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            height: 100vh; /* Ocupa toda a altura da janela */
-            margin: 0; /* Remove margens padrão */
-            font-family: Arial, sans-serif; /* Fonte para o texto */
-            background-color: #f4f4f4; /* Cor de fundo clara */
-        }
-    </style>
-</head>
-<body>
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {%block content%}
-    <h1 id = delete>Delete post</h1>
-    <form action="" method = "post">{%csrf_token%}
-        <p>Are you sure you want delete "{{post.title}}"?</p>
-        <input type="submit" value = "Confirm">
-    </form>
-    {%endblock content%}
-</body>
-</html>
+{%block content%}
+{% if user == object.author %}
+    <h1 id = delete, style="text-align: center;">Deletando: {{object.title}}</h1>
+        <form action="" method = "post"  style="text-align: center;">{%csrf_token%}
+            <p  style="text-align: center;">Tem certeza que quer deletar "{{post.title}}"?</p>
+            <input type="submit" value = "Confirm">
+        </form>
+    {%else%} 
+        <p style="text-align: center; margin: 0; color: red;">Permissão negada. {{user}} não é o dono do Post</p>
+{%endif%}
+{%endblock content%}

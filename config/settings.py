@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-57_)ptk02a2^6)+cq9l)8w-hg7lmdiqnltq=5f*4x8=sbp770*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '70c3-2804-d59-875d-500-5189-1d23-8ed0-5082.ngrok-free.app',
+]
 
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'accounts',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -82,6 +89,10 @@ DATABASES = {
     }
 }
 
+CORS_ALLOWED_ORIGINS = [
+    'https://70c3-2804-d59-875d-500-5189-1d23-8ed0-5082.ngrok-free.app',
+]
+CSRF_TRUSTED_ORIGINS = ['https://70c3-2804-d59-875d-500-5189-1d23-8ed0-5082.ngrok-free.app']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -105,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 

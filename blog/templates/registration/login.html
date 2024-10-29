@@ -1,31 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            height: 100vh; 
-            margin: 0; 
-            text-align: center; 
-        }
-    </style>
-</head>
-<body>
-    {% extends 'base.html' %}
+<style>
 
-    {% block content %}
-    <h2>Log In</h2>
-    <form method="post">    
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Log In</button>
-    </form>
-    <p><a href="{% url 'signup' %}">Signup</a></p>
-    {% endblock content %}
-</body>
-</html>
+.login-container {
+    max-width: 400px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+
+.login-container button {
+    margin-top: 10px; 
+    padding: 10px; 
+    background-color: #333; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.login-container button:hover {
+    background-color: #c00404; 
+}
+
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="login_page">
+    <div class="login-container">
+        <h2>Log In</h2>
+        <form method="post">    
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+        </form>
+        <p><a href="{% url 'signup' %}">Signup</a></p>
+    </div>
+</main>
+{% endblock content %}
+

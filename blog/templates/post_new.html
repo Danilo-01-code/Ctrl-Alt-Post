@@ -1,23 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piada Interna - Post New</title>
-    <link rel="stylesheet" href="{%static 'css/posts.css'}">
-</head>
-<body>
-    {% extends 'base.html' %}
+<style> 
+    .post-container {
+    max-width: 600px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
 
-    {% block content %}
-    <div class="container">
-        <h1>New Post</h1>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Save">
-        </form>
-    </div>
-    {% endblock content %}
-</body>
-</html>
+.post-container button {
+    margin-top: 10px; 
+    padding: 10px; 
+    background-color: #333; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.post-container button:hover {
+    background-color: #c00404; 
+}
+
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post-container">
+    <h1>Novo Post</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Postar</button>
+    </form>
+</div>
+{% endblock content %}
+

@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piada Interna Home</title>
-</head>
-<body>
-    {% extends 'base.html' %}
-    {% block content %}
-    {% for post in object_list %}
-    <div class="post-entry">
-        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.body }}</p>
-    </div>
-    {% endfor %}
-    {% endblock content %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{% for post in object_list %}
+<div class="post-entry">
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.body|slice:":150" }}{% if post.body|length > 100 %}...{% endif %}</p>
+</div>
+{% endfor %}
+{% endblock content %}

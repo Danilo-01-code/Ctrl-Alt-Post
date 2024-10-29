@@ -1,20 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% extends 'base.html' %}
+<style>
+.signup-container {
+    max-width: 400px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
 
-    {% block content %}
+.signup-container button {
+    margin-top: 10px; 
+    padding: 10px; 
+    background-color: #333; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.signup-container button:hover {
+    background-color: #c00404; 
+}
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="signup-container">
     <h2>Signup</h2>
-    <form method = 'post'>  
-        {%csrf_token%}
-        {{form.as_p}}
+    <form method='post'>  
+        {% csrf_token %}
+        {{ form.as_p }}
         <button type="submit">Sign Up</button>
     </form>
-    {% endblock content %}
-</body>
-</html>
+</div>
+{% endblock content %}
+
+

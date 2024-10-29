@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piada Interna Channel</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <style> 
+    <style>   
     .hi{
         text-align: center;
         color:black;
     }
     .log {
-            text-align: center; 
-            margin: 0; 
-        }
+        text-align: center; 
+        margin: 0; 
+    }
     </style>
 </head>
 <body>
@@ -26,11 +26,11 @@
             </h1>
         </div>
         <div class="nav-right">
-            <a href="{% url 'post_new' %}">+ New Blog Post</a>
+            <a href="{% url 'post_new' %}">+ Novo Post no Blog</a>
         </div>
     </header>
     {%if user.is_authenticated%}
-        <p class = 'hi'>Hi {{user.username}}.</p>
+        <p class = 'hi'>Olá piadeiro interno: {{user.username}}.</p>
         <p class = 'log'><a href="{% url 'logout' %}">Log Out</a></p>
     {% else %}
         <p class = 'hi'>You are not logged in.</p>

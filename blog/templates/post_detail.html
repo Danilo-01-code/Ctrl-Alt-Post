@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piada Interna Post Detail</title>
-    </head>
-<body>
-    {% extends 'base.html' %}
-    {% block content %}
-    <div class="post-entry">
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.body }}</p>
-    </div>
-    <p><a href="{%url 'post_edit' post.pk%}">+ Edit Blog Post</a></p>
-    <p><a href="{%url 'post_delete' post.pk%}">+ Delete Blog Post</a></p>
-    {% endblock content %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="post-entry">
+    <h2>{{ post.title }}</h2>
+    <p><strong>Autor:</strong> {{ post.author.username }}</p>
+    <p>{{ post.body }}</p>
+</div>
+    <p><a href="{%url 'post_edit' post.pk%}">+ Editar Post</a></p>
+    <p><a href="{%url 'post_delete' post.pk%}">+ Deletar Post</a></p>
+{% endblock content %}
