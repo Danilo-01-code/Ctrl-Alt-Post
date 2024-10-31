@@ -4,6 +4,7 @@
     <h2>{{ post.title }}</h2>
     <p><strong>Autor:</strong> {{ post.author.username }}</p>
     <p>{{ post.body }}</p>
+    <p style="font-style: italic;">Publicado em: {{ post.date }}</p>
 </div>
     <p><a href="{%url 'post_edit' post.pk%}">+ Editar Post</a></p>
     <p><a href="{%url 'post_delete' post.pk%}">+ Deletar Post</a></p>

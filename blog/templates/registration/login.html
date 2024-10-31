@@ -1,34 +1,34 @@
 <style>
 
-.login-container {
-    max-width: 400px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    background: #fff; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    text-align: center; 
-}
-
-.login-container button {
-    margin-top: 10px; 
-    padding: 10px; 
-    background-color: #333; 
-    color: #fff; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-}
-
-.login-container button:hover {
-    background-color: #c00404; 
-}
-
+    .login-container {
+        max-width: 400px; 
+        margin: 20px auto; 
+        padding: 20px; 
+        background: #fff; 
+        border-radius: 5px; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        text-align: center; 
+    }
+    
+    .login-container button {
+        margin-top: 10px; 
+        padding: 10px; 
+        background-color: #333; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+    }
+    
+    .login-container button:hover {
+        background-color: #c00404; 
+    }
+    
 </style>
-
+    
 {% extends 'base.html' %}
-
+    
 {% block content %}
 <main class="login_page">
     <div class="login-container">
@@ -36,10 +36,9 @@
         <form method="post">    
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Log In</button>
+            <button class="btn btn-success" type="submit">Log In</button>
         </form>
         <p><a href="{% url 'signup' %}">Signup</a></p>
     </div>
 </main>
 {% endblock content %}
-

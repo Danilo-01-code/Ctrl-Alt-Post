@@ -7,11 +7,22 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .forms import SignUpForm
 
+
+def contact_view(request):
+    form = ContactForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 class BlogListView(ListView):
     model = Post
     template_name = 'home.html'
+    context_object_name = 'posts'  # Adiciona o nome do contexto
+
+    def get_queryset(self):
+        # Retorna os posts em ordem decrescente
+        return Post.objects.all().order_by('-date')
+
 
 
 class BlogDetailView(DetailView): 
@@ -44,11 +55,13 @@ class BlogDeleteView(DeleteView):
 
 def signupView(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')  
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password']) 
+            user.save()
+            return redirect('login') 
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
+
     return render(request, 'registration/signup.html', {'form': form})

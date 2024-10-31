@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '70c3-2804-d59-875d-500-5189-1d23-8ed0-5082.ngrok-free.app',
 ]
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'blog',
     'accounts',
     'corsheaders',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
