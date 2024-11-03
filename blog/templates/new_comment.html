@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Adicionar um Comentário:</h3>
+<form method="POST" action="{% url 'new_comment' post.pk %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="comment">Seu comentário:</label>
+        {{ form.comment }}  
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+</form>
+{% endblock %}

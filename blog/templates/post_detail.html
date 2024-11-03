@@ -1,11 +1,50 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<div class="post-entry">
-    <h2>{{ post.title }}</h2>
-    <p><strong>Autor:</strong> {{ post.author.username }}</p>
-    <p>{{ post.body }}</p>
-    <p style="font-style: italic;">Publicado em: {{ post.date }}</p>
+<style>
+.post-body {
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #333; /* Cor do texto */
+    background-color: #f9f9f9; /* Cor de fundo */
+    padding: 10px; /* Adiciona um espaço interno */
+    border-left: 4px solid #007BFF; /* Borda à esquerda */
+    margin: 20px 0; /* Adiciona espaço acima e abaixo */
+    border-radius: 4px; /* Cantos arredondados */
+}
+</style>
+
+<div class="container">
+    <div class="post-entry mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>{{ post.title }}</h2>
+                <p><strong>Autor:</strong> {{ post.author.username }}</p>
+            </div>
+            <div class="card-body">
+                <p class = "post-body">{{ post.body }}</p>
+                <p style="font-style: italic;">Publicado em: {{ post.date }}</p>
+            </div>
+            <div class="card-footer">
+                <p>
+                    <a href="{% url 'post_edit' post.pk %}" class="btn btn-warning">+ Editar Post</a>
+                    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">+ Deletar Post</a>
+                    <a href="{% url 'new_comment' post.pk %}" class="btn btn-primary">+ Comentar</a>
+                </p>
+                <h3>Comentários:</h3>
+                {% if post.comments.count > 0 %}
+                    <div class="comments-list">
+                        {% for comment in post.comments.all %}
+                        <div class="comment-entry mb-2">
+                            <p><strong>{{ comment.author.username }}:</strong> {{ comment.comment }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Não há comentários ainda.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
-    <p><a href="{%url 'post_edit' post.pk%}">+ Editar Post</a></p>
-    <p><a href="{%url 'post_delete' post.pk%}">+ Deletar Post</a></p>
 {% endblock content %}

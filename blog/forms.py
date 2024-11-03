@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Field
+from .models import Comment
 
 class SignUpForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -22,3 +23,9 @@ class SignUpForm(forms.ModelForm):
             Field('password_confirm'),
             Submit('submit', 'Sign Up', css_class='btn btn-primary'),
         )
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']  #

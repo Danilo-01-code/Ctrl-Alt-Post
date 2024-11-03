@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
+
 {% block content %}
-{% for post in posts %}
-<div class="post-entry">
-    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-    <p>{{ post.body|slice:":150" }}{% if post.body|length > 100 %}...{% endif %}</p>
+<style>
+    .post-body {
+        font-size: 1.2em; /* Aumenta o tamanho da fonte */
+        font-weight: bold; /* Deixa o texto em negrito */
+        color: #333; /* Cor do texto */
+        background-color: #f9f9f9; /* Cor de fundo */
+        padding: 10px; /* Adiciona um espaço interno */
+        border-left: 4px solid #007BFF; /* Borda à esquerda */
+        margin: 20px 0; /* Adiciona espaço acima e abaixo */
+        border-radius: 4px; /* Cantos arredondados */
+    }
+</style>
+
+<div class="container">
+    {% for post in posts %}
+    <div class="post-entry mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            </div>
+            <div class="card-body">
+                <p class = "post-body">{{ post.body|slice:":200" }}{% if post.body|length > 100 %}...{% endif %}</p>
+            </div>
+            <div class="card-footer">
+                <strong>Comentários:</strong>
+                {% if post.comments.count > 0 %}
+                    <div class="comments-list">
+                        {% for comment in post.comments.all %}
+                        <div class="comment-entry mb-2">
+                            <p><strong>{{ comment.author.username }}:</strong> {{ comment.comment }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="font-style: italic;">Este post não tem comentários ainda.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock content %}

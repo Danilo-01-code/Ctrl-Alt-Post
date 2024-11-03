@@ -4,15 +4,12 @@ from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, CommentForm
+from django.views import View
 
-
-def contact_view(request):
-    form = ContactForm()
-    return render(request, 'registration/signup.html', {'form': form})
 
 class BlogListView(ListView):
     model = Post
@@ -51,7 +48,25 @@ class BlogDeleteView(DeleteView):
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('home')
-    
+
+
+class CommentCreateView(View):
+    def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = CommentForm()  
+        return render(request, 'new_comment.html', {'form': form, 'post': post})
+
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = CommentForm(request.POST)  # Preenchendo o formulário com dados do POST
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post  # Associando o comentário ao post
+            comment.author = request.user  # Associando o autor ao comentário
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+        return render(request, 'new_comment.html', {'form': form, 'post': post})
+
 
 def signupView(request):
     if request.method == 'POST':
