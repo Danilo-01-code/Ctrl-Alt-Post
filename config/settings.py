@@ -1,7 +1,10 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
-SECRET_KEY = 'django-insecure-57_)ptk02a2^6)+cq9l)8w-hg7lmdiqnltq=5f*4x8=sbp770*'
+load_dotenv()
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret-key')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
