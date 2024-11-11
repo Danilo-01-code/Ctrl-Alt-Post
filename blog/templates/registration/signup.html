@@ -9,9 +9,9 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }} 
-        <button class="btn btn-success" type="submit">Entrar</button> <!-- Usando Crispy Forms -->
+        <button class="btn btn-success" type="submit">Enter</button> 
         </form>
-        <p><a href="{% url 'login' %}">Já tem uma conta? Log In</a></p>
+        <p><a href="{% url 'login' %}">Do you alread have an account? Log In</a></p>
     </div>
 </main>
 {% endblock content %}

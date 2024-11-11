@@ -2,12 +2,12 @@
 
 {%block content%}
 {% if user == object.author %}
-    <h1 id = delete, style="text-align: center;">Deletando: {{object.title}}</h1>
+    <h1 id = delete, style="text-align: center;">Deleting: {{object.title}}</h1>
         <form action="" method = "post"  style="text-align: center;">{%csrf_token%}
-            <p  style="text-align: center;">Tem certeza que quer deletar "{{post.title}}"?</p>
+            <p  style="text-align: center;">Are you sure you want to delete "{{post.title}}"?</p>
             <input type="submit" value = "Confirm">
         </form>
     {%else%} 
-        <p style="text-align: center; margin: 0; color: red;">Permissão negada. {{user}} não é o dono do Post</p>
+        <p style="text-align: center; margin: 0; color: red;">Denied. User: {{user}} are not the owner of the post</p>
 {%endif%}
 {%endblock content%}

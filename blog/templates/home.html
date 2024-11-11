@@ -25,7 +25,7 @@
                 <p class = "post-body">{{ post.body|slice:":200" }}{% if post.body|length > 100 %}...{% endif %}</p>
             </div>
             <div class="card-footer">
-                <strong>Comentários:</strong>
+                <strong>Comments:</strong>
                 {% if post.comments.count > 0 %}
                     <div class="comments-list">
                         {% for comment in post.comments.all %}
@@ -35,7 +35,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <p style="font-style: italic;">Este post não tem comentários ainda.</p>
+                    <p style="font-style: italic;">This post has no comments yet.</p>
                 {% endif %}
             </div>
         </div>

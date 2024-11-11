@@ -19,19 +19,19 @@
         <div class="card">
             <div class="card-header">
                 <h2>{{ post.title }}</h2>
-                <p><strong>Autor:</strong> {{ post.author.username }}</p>
+                <p><strong>Author:</strong> {{ post.author.username }}</p>
             </div>
             <div class="card-body">
                 <p class = "post-body">{{ post.body }}</p>
-                <p style="font-style: italic;">Publicado em: {{ post.date }}</p>
+                <p style="font-style: italic;">Published in: {{ post.date }}</p>
             </div>
             <div class="card-footer">
                 <p>
-                    <a href="{% url 'post_edit' post.pk %}" class="btn btn-warning">+ Editar Post</a>
-                    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">+ Deletar Post</a>
-                    <a href="{% url 'new_comment' post.pk %}" class="btn btn-primary">+ Comentar</a>
+                    <a href="{% url 'post_edit' post.pk %}" class="btn btn-warning">+ Edit Post</a>
+                    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">+ Delete Post</a>
+                    <a href="{% url 'new_comment' post.pk %}" class="btn btn-primary">+ Comment</a>
                 </p>
-                <h3>Comentários:</h3>
+                <h3>Comments:</h3>
                 {% if post.comments.count > 0 %}
                     <div class="comments-list">
                         {% for comment in post.comments.all %}
@@ -41,7 +41,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <p>Não há comentários ainda.</p>
+                    <p>This post has no comments yet.</p>
                 {% endif %}
             </div>
         </div>
