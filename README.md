@@ -22,20 +22,29 @@ This is a **blog** project developed with **Django**, implementing a complete **
 ### 1. **Clone the repository**
 Clone the repository to your local machine using Git:
 
-´git clone https://github.com/your-username/ctrl-alt-post.git
-cd ctrl-alt-post´
+```bash
+git clone https://github.com/Danilo-01-code/Ctrl-Alt-Post
+```
 
 ### 2. **install dependences**
-´pip install -r requirements.txt´
+```bash
+pip install -r requirements.txt
+```
 
 ### 3. **Set up database**
-´python manage.py migrate´
+```bash
+python manage.py migrate
+```
 
 ### 4. **Create a super User (Optional)**
-´python manage.py createsuperuser´
+```bash
+python manage.py createsuperuser
+```
 
-### 5; **Run the server**
-´python manage.py runserver´
+### 5. **Run the server**
+```bash
+python manage.py runserver
+```
 
-### License
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
