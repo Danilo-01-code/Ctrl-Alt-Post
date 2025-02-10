@@ -1,5 +1,7 @@
 # **Ctrl+Alt+Post - Django Blog**
 
+![My Personal Project](images/main.jpeg)
+
 This is a **blog** project developed with **Django**, implementing a complete **CRUD** system  for managing posts and comments. The project allows users to create, edit, view, and delete posts, as well as interact with comments..
 
 ## **Features**
